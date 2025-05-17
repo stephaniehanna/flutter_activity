@@ -31,6 +31,35 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  Widget sectionTitle(String title) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 19.5,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff333333),
+        ),
+      ),
+    );
+  }
+
+  Widget sectionText(String text) {
+    return Text(
+      text,
+      style: const TextStyle(fontSize: 15, color: Color(0xff555555)),
+      textAlign: TextAlign.justify,
+    );
+  }
+
+  Widget infoTile(IconData icon, String text) {
+    return ListTile(
+      leading: Icon(icon, color: const Color(0xff9DCEFF)),
+      title: Text(text),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,120 +81,124 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Hanna Stephanie Bacarro',
+                    'Hanna Stephanie A. Bacarro',
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff333333),
                     ),
                   ),
                   const SizedBox(height: 5),
                   const Text(
-                    'bacarrohanna@email.com',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    '💻 BSIT Student',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey,
+                    ),
                   ),
                   const SizedBox(height: 20),
-                  const Divider(),
+                  const Divider(thickness: 1),
                   const SizedBox(height: 10),
 
-                  // Degree and University
-                  ListTile(
-                    leading: const Icon(Icons.school, color: Color(0xff9DCEFF)),
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Bachelor of Science in Information Technology',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff333333),
+                  sectionTitle('About'),
+                  sectionText(
+                    'An ambitious but procrastinating student fueled by 🥟 siomai and big dreams. Loves to grow stronger 💪 and laugh along the way.',
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  sectionTitle('Goals'),
+                  sectionText(
+                    'To stay consistent with fitness routines, develop a stronger body and mindset 🧠, and turn small efforts into lasting progress.',
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  sectionTitle('Meal Preference'),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          margin: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.pink.shade50,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            children: const [
+                              Icon(Icons.free_breakfast, color: Colors.pink),
+                              SizedBox(height: 8),
+                              Text(
+                                'Breakfast',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text('🥣 Oats + Banana'),
+                            ],
                           ),
                         ),
-                        SizedBox(height: 4),
-                        Text(
-                          'Filamer Christian University',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
+                      ),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          margin: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.green.shade50,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            children: const [
+                              Icon(Icons.lunch_dining, color: Colors.green),
+                              SizedBox(height: 8),
+                              Text(
+                                'Lunch',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text('🍚 Rice + Veggies'),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'About',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff333333),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'An ambitious but procrastinating IT student fueled by siomai and big dreams. Always striving to improve, with a little sense of humor and a love for joking around. Passionate about learning new tech and making the most out of every moment in college.',
-                    style: TextStyle(fontSize: 15, color: Color(0xff555555)),
-                    textAlign: TextAlign.justify,
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  // Swapped: Goals first
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Goals',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff333333),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          margin: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.blue.shade50,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            children: const [
+                              Icon(Icons.dinner_dining, color: Colors.blue),
+                              SizedBox(height: 8),
+                              Text(
+                                'Dinner',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text('🥟 Siomai + Soup'),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'To graduate strong despite the chaos, grow as a skilled IT professional, and turn big dreams into impactful tech innovations—all while keeping a good sense of humor.',
-                    style: TextStyle(fontSize: 15, color: Color(0xff555555)),
-                    textAlign: TextAlign.justify,
+                    ],
                   ),
 
                   const SizedBox(height: 20),
 
-                  // Then Contact Information with email changed to GitHub
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Contact Information',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff333333),
-                      ),
-                    ),
-                  ),
+                  sectionTitle('Contact Information'),
                   const SizedBox(height: 10),
-                  ListTile(
-                    leading: const Icon(Icons.phone, color: Color(0xff9DCEFF)),
-                    title: const Text('+63 909 362 4468'),
+                  infoTile(Icons.phone_iphone_rounded, '+63 909 362 4468'),
+                  infoTile(Icons.email_outlined, 'bacarrohanna@email.com'),
+                  infoTile(
+                    Icons.link_rounded,
+                    'linkedin.com/in/hannastephanie',
                   ),
-                  ListTile(
-                    leading: const Icon(Icons.link, color: Color(0xff9DCEFF)),
-                    title: const Text('linkedin.com/in/hannastephanie'),
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.code,
-                      color: Color(0xff9DCEFF),
-                    ), // changed icon to code for GitHub
-                    title: const Text(
-                      'github.com/hannastephanie',
-                    ), // changed email to github
+                  infoTile(
+                    Icons.location_on_outlined,
+                    '📍 Cudian, Ivisan Capiz',
                   ),
 
                   const SizedBox(height: 20),

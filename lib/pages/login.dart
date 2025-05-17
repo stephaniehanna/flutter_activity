@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'home.dart'; // Make sure you have a HomePage widget
+import 'home.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+  State<LoginPage> createState() => _LoginPageState();
+}
 
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool _obscurePassword = true;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA), // Soft background
+      backgroundColor: const Color(0xFFF5F7FA),
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -52,10 +58,10 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 23),
 
-                  // Password Field
+                  // Password Field with eye icon toggle
                   TextField(
                     controller: passwordController,
-                    obscureText: true,
+                    obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock_outline),
                       labelText: 'Password',
@@ -68,6 +74,18 @@ class LoginPage extends StatelessWidget {
                           color: Colors.grey.shade100,
                           width: 1,
                         ),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
                       ),
                     ),
                   ),
